@@ -1,4 +1,4 @@
-# data
+# Data
 
 generate "data" {
   path = "data.tf"
@@ -8,28 +8,28 @@ generate "data" {
   EOF
 }
 
-# locals
+# Locals
 
 generate "locals" {
-  path      = "local.tf"
+  path      = "locals.tf"
   if_exists = "overwrite_terragrunt"
   contents = <<EOF
 locals {
   service = "${replace(path_relative_to_include(), "\\", "/")}"
-  terraform_url = "https://www.codeberg.com/codo/sandbox-infrastructure/${replace(path_relative_to_include(), "\\", "/")}"
+  terraform_url = "https://github.com/colclough-doran/terraform-aws/${replace(path_relative_to_include(), "\\", "/")}"
 }
 EOF
 }
 
-# provider
+# Providers
 
-generate "provider" {
-  path      = "provider.tf"
+generate "providers" {
+  path      = "providers.tf"
   if_exists = "overwrite"
   contents  = <<EOF
     provider "aws" {
     region = "eu-west-1"
-    profile = "CoDo - Sandbox"
+    profile = "sandbox"
 
     default_tags {
     tags = {
@@ -41,7 +41,7 @@ generate "provider" {
 EOF
 }
 
-# state
+# State
 
 generate "backend" {
   path      = "backend.tf"
@@ -49,10 +49,10 @@ generate "backend" {
   contents = <<EOF
 terraform {
   backend "s3" {
-    bucket  = "codo-sandbox-infrastructure"
+    bucket  = "cd-tfstate-sandbox"
     key     = "${replace(path_relative_to_include(), "\\", "/")}/terraform.tfstate"
     region  = "eu-west-1"
-    profile = "CoDo - Sandbox"
+    profile = "sandbox"
   }
 }
 EOF
