@@ -12,7 +12,7 @@ resource "aws_instance" "this" {
   iam_instance_profile = var.instance_profile
   key_name             = var.key_pair_name
   security_groups      = var.security_groups_ids
-  subnet_id            = var.private_subnet_id
+  subnet_id            = var.subnet_id
 
   tags = {
     Name               = var.instance_name

@@ -47,7 +47,7 @@ variable "security_groups_ids" {
 
 # Networking
 
-variable "private_subnet_id" {
-  description = "The ID for a Private Subnet in eu-west-1"
+variable "subnet_id" {
+  description = "The subnet ID"
   type        = string
 }
