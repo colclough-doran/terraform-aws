@@ -1,14 +1,10 @@
-module "vpc_sandbox" {
-  source = "../../modules/vpc/"
+module "sandbox_vpc" {
+  source = "../../modules/vpc"
 
-  vpc_name = var.vpc_name
-  aws_region = var.aws_region
-  environment = var.environment
-
-  vpc_cidr_block = ""
-  subnet_cidr_block = ""  
-  
-  vpc_subnet_azs = ""
-
-  public_subnet_required = true
+  aws_region        = var.aws_region
+  environment       = var.environment
+  subnet_cidr_block = var.subnet_cidr_block
+  vpc_cidr_block    = var.vpc_cidr_block
+  vpc_subnet_azs    = var.vpc_subnet_azs
+  vpc_name          = var.vpc_name
 }
