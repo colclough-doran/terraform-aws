@@ -4,6 +4,9 @@
 # Local .terragrunt directories
 .terragrunt-cache/
 
+# Backend files
+backend.tf
+
 # .tfstate files
 *.tfstate
 *.tfstate.*

@@ -43,6 +43,11 @@ variable "private_route_table_required" {
   default     = false
 }
 
+variable "project_scope" {
+  description = "The proejct name or scope"
+  type        = string
+}
+
 variable "subnet_cidr_block" {
   description = "The CIDR block the subnets can choose from"
   type        = map(string)
@@ -50,11 +55,6 @@ variable "subnet_cidr_block" {
 
 variable "vpc_cidr_block" {
   description = "The CIDR block used by the VPC"
-  type        = string
-}
-
-variable "vpc_name" {
-  description = "The name of the VPC being created"
   type        = string
 }
 

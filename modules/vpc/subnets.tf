@@ -8,7 +8,7 @@ resource "aws_subnet" "private" {
   vpc_id            = aws_vpc.this.id
 
   tags = {
-    Name = "private-subnet-${each.key}"
+    Name = "${var.environment}-${each.key}-${var.project_scope}-private"
   }
 }
 
@@ -22,6 +22,6 @@ resource "aws_subnet" "public" {
   vpc_id            = aws_vpc.this.id
 
   tags = {
-    Name = "public-subnet-${each.key}"
+    Name = "${var.environment}-${each.key}-${var.project_scope}-public"
   }
 } 
