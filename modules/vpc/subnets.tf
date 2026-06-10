@@ -1,8 +1,5 @@
 # PRIVATE SUBNETS
 resource "aws_subnet" "private" {
-  # If false, set count to 0 and skip creation
-  count = var.private_subnet_required == true ? 1 : 0
-
   for_each = toset(var.vpc_subnet_azs)
 
   availability_zone = each.key
@@ -11,15 +8,12 @@ resource "aws_subnet" "private" {
   vpc_id            = aws_vpc.this.id
 
   tags = {
-    Name = "private-subnet-${each.key}"
+    Name = "${var.environment}-${each.key}-${var.project_scope}-private"
   }
 }
 
 # PUBLIC SUBNETS
 resource "aws_subnet" "public" {
-  # If false, set count to 0 and skip creation
-  count = var.public_subnet_required == true ? 1 : 0
-
   for_each = toset(var.vpc_subnet_azs)
 
   availability_zone = each.key
@@ -28,6 +22,6 @@ resource "aws_subnet" "public" {
   vpc_id            = aws_vpc.this.id
 
   tags = {
-    Name = "public-subnet-${each.key}"
+    Name = "${var.environment}-${each.key}-${var.project_scope}-public"
   }
 } 

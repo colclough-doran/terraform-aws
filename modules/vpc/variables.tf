@@ -9,7 +9,7 @@ variable "environment" {
 
   validation {
     condition     = contains(["dev", "staging", "production"], lower(var.environment))
-    error_message = "Environment must be dev, staging, or prod."
+    error_message = "Environment must be dev, staging, or production."
   }
 }
 
@@ -37,27 +37,20 @@ variable "public_route_table_required" {
   default     = false
 }
 
-variable "public_subnet_required" {
-  description = "Is resrouce required?"
-  type        = bool
-  default     = false
-}
-
 variable "private_route_table_required" {
   description = "Is resrouce required?"
   type        = bool
   default     = false
 }
 
-variable "private_subnet_required" {
-  description = "Is resrouce required?"
-  type        = bool
-  default     = false
+variable "project_scope" {
+  description = "The proejct name or scope"
+  type        = string
 }
 
 variable "subnet_cidr_block" {
   description = "The CIDR block the subnets can choose from"
-  type = map(string)
+  type        = map(string)
 }
 
 variable "vpc_cidr_block" {
@@ -65,12 +58,7 @@ variable "vpc_cidr_block" {
   type        = string
 }
 
-variable "vpc_name" {
-  description = "The name of the VPC being created"
-  type        = string
-}
-
 variable "vpc_subnet_azs" {
   description = "The availability zones useds by the subnets"
-  type = list(string)
+  type        = list(string)
 }
