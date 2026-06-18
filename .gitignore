@@ -7,9 +7,6 @@
 # Backend files
 backend.tf
 
-# Data files
-data.tf
-
 # .tfstate files
 *.tfstate
 *.tfstate.*
