@@ -16,6 +16,6 @@ module "ec2_instance_jenkins_docker" {
 
   # Tags
   instance_purpose_tag = var.instance_purpose_jenkins_docker_tag
-  instance_os_tag      = var.instance_os_jenkins_docker_tag
-  instance_role_tag    = var.instance_role_jenkins_docker_tag
+  instance_os_tag      = var.instance_os_linux_tag
+  instance_role_tag    = var.instance_role_docker_host_tag
 }

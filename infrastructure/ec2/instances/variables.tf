@@ -6,12 +6,6 @@ variable "state_file_name" {}
 
 ### Jenkins Instances
 
-variable "instance_ami_id_jenkins_docker" {
-  default     = "ami-0de864d6a3bd20ea8"
-  description = "The ID of the AMI used to create the Jenkins Docker instance"
-  type        = string
-}
-
 variable "instance_name_jenkins_docker" {
   default     = "jenkins-docker"
   description = "The name of the Jenkins Docker instance"
@@ -26,7 +20,7 @@ variable "instance_type_jenkins_docker" {
 
 # Jenkins Instances Tags
 
-variable "instance_os_jenkins_docker_tag" {
+variable "instance_os_linux_tag" {
   default     = "Linux"
   description = "The instance operating system"
   type        = string
@@ -38,7 +32,7 @@ variable "instance_purpose_jenkins_docker_tag" {
   type        = string
 }
 
-variable "instance_role_jenkins_docker_tag" {
+variable "instance_role_docker_host_tag" {
   default     = "Docker-Host"
   description = "The instance role"
   type        = string
