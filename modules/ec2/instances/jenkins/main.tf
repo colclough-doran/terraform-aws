@@ -2,7 +2,7 @@ resource "aws_instance" "this" {
   ami           = var.ami_id
   instance_type = var.instance_type
 
-  #user_data = file("${path.module}/user-data/bootstrap.sh")
+  user_data = file("${path.module}/user-data/bootstrap.sh")
   lifecycle {
     ignore_changes = [
       security_groups
