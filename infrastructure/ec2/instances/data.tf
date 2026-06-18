@@ -1,3 +1,25 @@
+data "aws_ami" "ubuntu_server_latest" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd-gp3/ubuntu-resolute-26.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "root-device-type"
+    values = ["ebs"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+}
+
+## Remote states
+
 # https://github.com/colclough-doran/terraform-aws/infrastructure/iam/roles
 data "terraform_remote_state" "iam_roles" {
   backend = "s3"
@@ -39,25 +61,5 @@ data "terraform_remote_state" "vpc" {
     key     = "vpc/${var.state_file_name}"
     region  = var.aws_region
     profile = var.aws_profile
-  }
-}
-
-data "aws_ami" "aws_linux_latest" {
-  most_recent = true
-  owners      = ["amazon"]
-
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd-gp3/ubuntu-resolute-26.04-amd64-server-*"]
-  }
-
-  filter {
-    name   = "root-device-type"
-    values = ["ebs"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
   }
 }
